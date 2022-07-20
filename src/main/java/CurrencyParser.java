@@ -16,7 +16,7 @@ public class CurrencyParser {
         String time = null;
         String currency = null;
         String rate = null;
-        int amount = 0;
+        double amount = 0;
         ArrayList <String> currencyList = new ArrayList<>();
         ArrayList <Double> rateList = new ArrayList<>();
 
@@ -62,7 +62,14 @@ public class CurrencyParser {
 
         //create Calculator
         Calculator calc = new Calculator(time, currencyList, rateList, amount);
-        int newAmount = calc.inputAmount();
+
+        double newAmount = 0;
+        try {
+            newAmount = calc.inputAmount();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         calc.setCurrency(currencyList, rateList, newAmount);
 
     }
